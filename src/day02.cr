@@ -51,11 +51,11 @@ class Advent::Day02
     }
     
     def initialize()
-        puts "Day 02 - Rock paper Scissors"
+        puts "[Day 02] Rock Paper Scissors"
     end   
     
     def run()
-        data = File.read("data/day02.txt").split("\n")
+        data = File.read("data/day02.txt").strip.split("\n")
         totalScore = 0
         totalScore2 = 0
         data.each do |line|
@@ -71,7 +71,7 @@ class Advent::Day02
 
             totalScore2 += @@scoring[opponent_play][player_play2]
         end
-        puts "Part 1: Total score: #{totalScore}"
-        puts "Part 2: Total score: #{totalScore2}"
+        puts "  [Part 1] Total score: #{totalScore}"
+        puts "  [Part 2] Total score: #{totalScore2}"
     end
 end
