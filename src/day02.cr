@@ -50,11 +50,9 @@ class Advent::Day02
         },
     }
     
-    def initialize()
+    def self.run
         puts "[Day 02] Rock Paper Scissors"
-    end   
-    
-    def run()
+
         data = File.read("data/day02.txt").strip.split("\n")
         totalScore = 0
         totalScore2 = 0

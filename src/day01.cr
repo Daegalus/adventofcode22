@@ -1,9 +1,7 @@
 class Advent::Day01
-    def initialize()
+    def self.run
         puts "[Day 01] Calorie Counting"
-    end
 
-    def run()
         data = File.read("data/day01.txt").strip.split("\n\n")
         elves = data.map do |elf|
             elf.split('\n').map(&.to_i).sum
