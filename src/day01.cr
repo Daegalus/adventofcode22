@@ -1,4 +1,4 @@
-class Advent::Day01
+module Advent::Day01
     def self.run
         puts "[Day 01] Calorie Counting"
 

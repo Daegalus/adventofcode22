@@ -1,4 +1,4 @@
-class Advent::Day02
+module Advent::Day02
     @@playMap = {
         "A" => "rock",
         "B" => "paper",

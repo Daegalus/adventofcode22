@@ -1,4 +1,4 @@
-class Advent::Day03
+module Advent::Day03
     def self.run
         puts "[Day 03] Rucksack Reorganization"
 

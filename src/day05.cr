@@ -47,7 +47,7 @@ module Advent::Day05
 
     stacks = start_state.transpose.map do |s|
       s.reject do |item|
-        item == "$"
+        item == '$'
       end.reverse
     end
 

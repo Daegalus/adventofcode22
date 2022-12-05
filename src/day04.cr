@@ -1,4 +1,4 @@
-class Advent::Day04
+module Advent::Day04
   def self.run
     puts "[Day 04] Camp Cleanup"
 
