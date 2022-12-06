@@ -4,10 +4,9 @@ module Advent::Day06
 
     data = File.read("data/day06.txt").strip
 
-    counter = 4 + data.each_char.cons(4).index { |group| group.uniq.size == group.size }.not_nil!
-    counter2 = 14 + data.each_char.cons(14).index { |group| group.uniq.size == group.size }.not_nil!
-    
-    puts "  [Part 1] #{counter}"
-    puts "  [Part 2] #{counter2}"
+    first_index = ->(x : Int32) { x + data.each_char.cons(x).index!(&.uniq.size.== x) }
+
+    puts "  [Part 1] #{first_index.call(4)}"
+    puts "  [Part 2] #{first_index.call(14)}"
   end
 end
