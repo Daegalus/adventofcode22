@@ -16,7 +16,7 @@ module Advent::Day08
         (y-1).downto(0).all? { |y2| grid[y2][x] < cell }
       end
     end
-    puts "Part 1: #{part1}"
+    puts "  [Part 1] #{part1}"
 
     part2 = grid.each_with_index.max_of do |row, y|
       row.each_with_index.max_of do |cell, x|
@@ -28,6 +28,6 @@ module Advent::Day08
         }.product
       end
     end
-    puts "Part 2: #{part2}"
+    puts "  [Part 2] #{part2}"
   end
 end

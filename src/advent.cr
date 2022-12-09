@@ -6,6 +6,7 @@ require "./day05"
 require "./day06"
 require "./day07"
 require "./day08"
+require "./day09"
 
 module Advent
   VERSION = "0.1.2"
@@ -19,7 +20,8 @@ module Advent
     # Advent::Day05.part2
     # Advent::Day06.run
     # Advent::Day07.run
-    Advent::Day08.run
+    # Advent::Day08.run
+    Advent::Day09.run
   end
 end
 
