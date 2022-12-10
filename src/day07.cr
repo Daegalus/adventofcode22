@@ -5,16 +5,15 @@ module Advent::Day07
   MIN_FREE_SPACE_NEEDED = 30_000_000
 
   def self.run
-    puts "[Day 07] Camp Cleanup"
+    puts "[Day 07] No Space Left On Device"
 
-    data = File.read("data/day07.txt").strip
+    data = Advent.input(day: 7)
 
     sizes = [] of Int32
     traverse(data.each_line, sizes)
 
-    puts "Part 1: #{sizes.reject(&.> MAX_TOTAL_DIR_SIZE).sum}"
-    puts "Part 2: #{sizes.reject(&.<(sizes.last - (MAX_FILESYSTEM_SIZE-MIN_FREE_SPACE_NEEDED))).min}"
-    
+    Advent.answer(part: 1, answer: "#{sizes.reject(&.> MAX_TOTAL_DIR_SIZE).sum}")
+    Advent.answer(part: 2, answer: "#{sizes.reject(&.<(sizes.last - (MAX_FILESYSTEM_SIZE-MIN_FREE_SPACE_NEEDED))).min}")   
   end
 
   def self.traverse(data, sizes : Array(Int32))

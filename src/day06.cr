@@ -1,12 +1,12 @@
 module Advent::Day06
   def self.run
-    puts "[Day 06] Camp Cleanup"
+    puts "[Day 06] Tuning Trouble"
 
-    data = File.read("data/day06.txt").strip
+    data = Advent.input(day: 6)
 
     first_index = ->(x : Int32) { x + data.each_char.cons(x).index!(&.uniq.size.== x) }
 
-    puts "  [Part 1] #{first_index.call(4)}"
-    puts "  [Part 2] #{first_index.call(14)}"
+    Advent.answer(part: 1, answer: "#{first_index.call(4)}")
+    Advent.answer(part: 2, answer: "#{first_index.call(14)}")
   end
 end

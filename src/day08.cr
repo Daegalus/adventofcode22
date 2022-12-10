@@ -2,7 +2,7 @@ module Advent::Day08
   def self.run
     puts "[Day 08] Treetop Tree Houe"
 
-    data = File.read("data/day08.txt").strip
+    data = Advent.input(day: 8)
 
     grid = data.lines.map(&.chars)
     xmax = grid[0].size - 1
@@ -16,7 +16,7 @@ module Advent::Day08
         (y-1).downto(0).all? { |y2| grid[y2][x] < cell }
       end
     end
-    puts "  [Part 1] #{part1}"
+    Advent.answer(part: 1, answer: part1.to_s)
 
     part2 = grid.each_with_index.max_of do |row, y|
       row.each_with_index.max_of do |cell, x|
@@ -28,6 +28,6 @@ module Advent::Day08
         }.product
       end
     end
-    puts "  [Part 2] #{part2}"
+    Advent.answer(part: 2, answer: part2.to_s)
   end
 end

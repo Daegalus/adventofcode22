@@ -53,7 +53,7 @@ module Advent::Day02
     def self.run
         puts "[Day 02] Rock Paper Scissors"
 
-        data = File.read("data/day02.txt").strip.split("\n")
+        data = Advent.input(day: 2).split("\n")
         totalScore = 0
         totalScore2 = 0
         data.each do |line|
@@ -69,7 +69,8 @@ module Advent::Day02
 
             totalScore2 += @@scoring[opponent_play][player_play2]
         end
-        puts "  [Part 1] Total score: #{totalScore}"
-        puts "  [Part 2] Total score: #{totalScore2}"
+
+        Advent.answer(part: 1, answer: "#{totalScore}")
+        Advent.answer(part: 2, answer: "#{totalScore2}")
     end
 end
