@@ -1,11 +1,6 @@
 module Advent::Day11
 
-  struct Monkey
-     property id : UInt64, items : Array(UInt64), operation : String, operation_value : UInt64, test : UInt64, true_throw : UInt64, false_throw : UInt64
-
-    def initialize(@id, @items, @operation, @operation_value, @test, @true_throw, @false_throw)
-    end
-
+  record Monkey, id : UInt64, items : Array(UInt64), operation : String, operation_value : UInt64, test : UInt64, true_throw : UInt64, false_throw : UInt64 do
     def operation(item : UInt64)
       case @operation
       when "+"
