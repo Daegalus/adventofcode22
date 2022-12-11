@@ -70,7 +70,6 @@ module Advent::Day11
       end
     end
 
-    puts counts.values.sort.inspect
     counts.values.sort[-2..].product
   end
 end
