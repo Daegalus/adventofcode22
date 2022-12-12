@@ -9,6 +9,7 @@ require "./day08"
 require "./day09"
 require "./day10"
 require "./day11"
+require "./day12"
 
 module Advent
   VERSION = "0.1.2"
@@ -24,7 +25,8 @@ module Advent
     # Advent::Day08.run
     # Advent::Day09.run
     # Advent::Day10.run
-    Advent::Day11.run
+    # Advent::Day11.run
+    Advent::Day12.run
   end
 
   def self.input(day : Int32)
