@@ -7,13 +7,13 @@ module Advent::Day05
   end
 
   def self.run
-    puts "[Day 05] Supply Stacks"
-    part1
-    part2
+    start_state, instructions = Advent.input_nostrip(day: 5, title: "Supply Stacks").split("\n\n")
+    part1(start_state.clone, instructions.clone)
+    part2(start_state, instructions)
   end
 
-  def self.part1
-    stacks, instructions = parse_input
+  def self.part1(start_state, instructions)
+    stacks, instructions = parse_input(start_state, instructions)
 
     instructions.each do |instruction|
       next unless instruction
@@ -26,8 +26,8 @@ module Advent::Day05
     Advent.answer(part: 1, answer: final)
   end
 
-  def self.part2
-    stacks, instructions = parse_input
+  def self.part2(start_state, instructions)
+    stacks, instructions = parse_input(start_state, instructions)
 
     instructions.each do |instruction|
       next unless instruction
@@ -40,9 +40,7 @@ module Advent::Day05
     Advent.answer(part: 2, answer: final)
   end
 
-  def self.parse_input
-    start_state, instructions = Advent.input_nostrip(day: 5).split("\n\n")
-    
+  def self.parse_input(start_state, instructions)
     despaced = start_state.lines[0..-2].map do |line|
       line.gsub("    ", "$")
         .gsub(/[\s\]\[]/, "")

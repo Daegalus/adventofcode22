@@ -1,8 +1,6 @@
 module Advent::Day08
   def self.run
-    puts "[Day 08] Treetop Tree Houe"
-
-    data = Advent.input(day: 8)
+    data = Advent.input(day: 8, title: "Treetop Tree House")
 
     grid = data.lines.map(&.chars)
     xmax = grid[0].size - 1

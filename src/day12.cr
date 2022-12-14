@@ -9,8 +9,7 @@ module Advent::Day12
   end
 
   def self.run
-    puts "[Day 12] Hill Climbing Algorithm"
-    data = Advent.input(day: 12)
+    data = Advent.input(day: 12, title: "Hill Climbing Algorithm")
 
     grid = data.lines.map(&.chars)
     w = grid[0].size

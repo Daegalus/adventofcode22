@@ -25,8 +25,7 @@ module Advent::Day13
   end
 
   def self.run
-    puts "[Day 13] Distress Signal"
-    data = Advent.input(day: 13)
+    data = Advent.input(day: 13, title: "Distress Signal")
 
     part1 = data.each_line
     .reject(&.empty?) # remove empty lines

@@ -51,9 +51,7 @@ module Advent::Day02
     }
     
     def self.run
-        puts "[Day 02] Rock Paper Scissors"
-
-        data = Advent.input(day: 2).split("\n")
+        data = Advent.input(day: 2, title: "Rock Paper Scissors").split("\n")
         totalScore = 0
         totalScore2 = 0
         data.each do |line|

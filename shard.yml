@@ -12,4 +12,9 @@ crystal: 1.6.0
 
 dependencies:
 
+libraries:
+  libz: "*"
+  libssl: "*"
+  libcrypt: "*"
+
 license: ISC

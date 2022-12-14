@@ -1,8 +1,6 @@
 module Advent::Day01
     def self.run
-        puts "[Day 01] Calorie Counting"
-
-        data = Advent.input(day: 1).split("\n\n")
+        data = Advent.input(day: 1, title: "Calorie Counting").split("\n\n")
         elves = data.map do |elf|
             elf.split('\n').map(&.to_i).sum
         end

@@ -5,9 +5,7 @@ module Advent::Day07
   MIN_FREE_SPACE_NEEDED = 30_000_000
 
   def self.run
-    puts "[Day 07] No Space Left On Device"
-
-    data = Advent.input(day: 7)
+    data = Advent.input(day: 7, title: "No Space Left On Device")
 
     sizes = [] of Int32
     traverse(data.each_line, sizes)

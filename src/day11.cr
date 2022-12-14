@@ -16,8 +16,7 @@ module Advent::Day11
   end
   
   def self.run
-    puts "[Day 11] Cathode-Ray Tube"
-    data = Advent.input(day: 11).split("\n\n")
+    data = Advent.input(day: 11, title: "Monkey In The Middle").split("\n\n")
 
     monkeys = load(data)
     Advent.answer(part: 1, answer: looks(monkeys, part: 1).to_s)

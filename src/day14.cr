@@ -15,8 +15,7 @@ module Advent::Day14
   end
 
   def self.run
-    puts "[Day 14] Regolith Reservoir"
-    data = Advent.input(day: 14)
+    data = Advent.input(day: 14, title: "Regolith Reservoir")
 
     rocks = Set({Int32, Int32}).new
     ymax = Int32::MIN

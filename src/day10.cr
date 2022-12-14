@@ -1,8 +1,6 @@
 module Advent::Day10
   def self.run
-    puts "[Day 10] Cathode-Ray Tube"
-
-    data = Advent.input(day: 10)
+    data = Advent.input(day: 10, title: "Cathode-Ray Tube")
 
     accumulated = data.each_line
       .flat_map { |line| line == "noop" ? [0] : [0, line[5..].to_i]}

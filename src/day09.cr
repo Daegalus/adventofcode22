@@ -25,9 +25,7 @@ module Advent::Day09
   end
 
   def self.run
-    puts "[Day 09] Rope Bridge"
-
-    data = Advent.input(day: 9)
+    data = Advent.input(day: 9, title: "Rope Bridge")
 
     ts = Array.new(10) { Point.new(0, 0)}
     visited = Set{ Point.new(0, 0) }

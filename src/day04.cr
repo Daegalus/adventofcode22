@@ -1,11 +1,9 @@
 module Advent::Day04
   def self.run
-    puts "[Day 04] Camp Cleanup"
-
     contains = 0
     overlaps = 0
     
-    Advent.input_lines(day: 4) do |line|
+    Advent.input_lines(day: 4, title: "Camp Cleanup") do |line|
       pairs = line.split(",").map { |pair| pair.split("-") }
       pairs = pairs.map { |pair| (pair[0].to_i..pair[1].to_i).to_a }
       
