@@ -16,25 +16,27 @@ require "./day11"
 require "./day12"
 require "./day13"
 require "./day14"
+require "./day15"
 
 module Advent
   VERSION = "0.1.2"
 
   def self.run
-    Advent::Day01.run
-    Advent::Day02.run
-    Advent::Day03.run
-    Advent::Day04.run
-    Advent::Day05.run
-    Advent::Day06.run
-    Advent::Day07.run
-    Advent::Day08.run
-    Advent::Day09.run
-    Advent::Day10.run
-    Advent::Day11.run
-    Advent::Day12.run
-    Advent::Day13.run
-    Advent::Day14.run
+    # Advent::Day01.run
+    # Advent::Day02.run
+    # Advent::Day03.run
+    # Advent::Day04.run
+    # Advent::Day05.run
+    # Advent::Day06.run
+    # Advent::Day07.run
+    # Advent::Day08.run
+    # Advent::Day09.run
+    # Advent::Day10.run
+    # Advent::Day11.run
+    # Advent::Day12.run
+    # Advent::Day13.run
+    # Advent::Day14.run
+    Advent::Day15.run
   end
 
   def self.input(day : Int32, title : String)
@@ -72,7 +74,7 @@ module Advent
     end
 
     FileUtils.mkdir_p(File.dirname(filename))
-    puts "Caching input for day #{day}...".colorize.light_blue
+    puts "Saving input for day #{day}...".colorize.light_blue
 
     cookies = HTTP::Cookies{HTTP::Cookie.new("session", File.read(token_filename))}
     headers = HTTP::Headers.new
