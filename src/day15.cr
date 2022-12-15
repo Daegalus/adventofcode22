@@ -51,24 +51,16 @@ module Advent::Day15
   end
 
   def self.blocked(locations, y)
-    blocked = [] of Range(Int32, Int32)
-    has_beacon = Set(Int32).new
+    xmin = Int32::MAX
+    xmax = Int32::MIN
+
     locations.each do |sensor, beacon, distance|
-      has_beacon << beacon.x if beacon.y == y
-
-      horizontal_dist = distance - (sensor.y - y).abs
-      xmin = sensor.x - horizontal_dist
-      xmax = sensor.x + horizontal_dist
-      next unless xmin <= xmax
-
-      overlap, blocked = blocked.partition { |r2| r2.begin <= xmax + 1 && r2.end >= xmin - 1 }
-      overlap << (xmin..xmax)
-      blocked << (overlap.min_of(&.begin)..overlap.max_of(&.end))
+      dis = distance - (sensor.y - y).abs
+      xmin = {xmin, sensor.x - dis}.min
+      xmax = {xmax, sensor.x + dis}.max
     end
 
-    blocked.sum do |r|
-      r.end - r.begin + 1 - has_beacon.count(&.in?(r))
-    end
+    xmax - xmin
   end
 
   def self.distress_beacon(locations)
