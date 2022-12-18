@@ -41,8 +41,8 @@ module Advent
     # Advent::Day14.run
     # Advent::Day15.run
     # Advent::Day16.run
-    Advent::Day17.run
-    # Advent::Day18.run
+    # Advent::Day17.run
+    Advent::Day18.run
   end
 
   def self.input(day : Int32, title : String)
