@@ -1,7 +1,7 @@
 module Advent::Day05
   struct Instruction
     property qty, from, to
-  
+
     def initialize(@qty : Int32, @from : Int32, @to : Int32)
     end
   end

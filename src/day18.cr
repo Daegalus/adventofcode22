@@ -1,22 +1,21 @@
 module Advent::Day18
-
   OFFSETS = [
-    { 0, 0, 0.5 },
-    { 0, 0.5, 0 },
-    { 0.5, 0, 0 },
-    { 0, 0, -0.5 },
-    { 0, -0.5, 0 },
-    { -0.5, 0, 0 },
+    {0, 0, 0.5},
+    {0, 0.5, 0},
+    {0.5, 0, 0},
+    {0, 0, -0.5},
+    {0, -0.5, 0},
+    {-0.5, 0, 0},
   ]
 
   def self.run
     data = Advent.input(day: 18, title: "Boiling Boulders")
 
     part1 = surface_area(data)
-    Advent.answer(part: 1, answer: part1.to_s)
+    Advent.answer(part: 1, answer: part1)
 
     part2 = no_air(data)
-    Advent.answer(part: 2, answer: part2.to_s)
+    Advent.answer(part: 2, answer: part2)
   end
 
   def self.surface_area(data : String)
@@ -41,7 +40,7 @@ module Advent::Day18
     mx = my = mz = Float64::INFINITY
     ox = oy = oz = -Float64::INFINITY
 
-    droplets = Set(Tuple(Float64|Int32,Float64|Int32,Float64|Int32)).new
+    droplets = Set(Tuple(Float64 | Int32, Float64 | Int32, Float64 | Int32)).new
 
     data.each_line do |line|
       x, y, z = line.split(",").map(&.to_i)
@@ -69,8 +68,8 @@ module Advent::Day18
     oy += 1
     oz += 1
 
-    queue = Deque(Tuple(Float64|Int32,Float64|Int32,Float64|Int32)).new([{mx, my, mz}])
-    air = Set(Tuple(Float64|Int32,Float64|Int32,Float64|Int32)).new([{mx, my, mz}])
+    queue = Deque(Tuple(Float64 | Int32, Float64 | Int32, Float64 | Int32)).new([{mx, my, mz}])
+    air = Set(Tuple(Float64 | Int32, Float64 | Int32, Float64 | Int32)).new([{mx, my, mz}])
 
     while cell = queue.shift?
       x, y, z = cell
@@ -86,7 +85,7 @@ module Advent::Day18
       end
     end
 
-    free = Set(Tuple(Float64|Int32,Float64|Int32,Float64|Int32)).new
+    free = Set(Tuple(Float64 | Int32, Float64 | Int32, Float64 | Int32)).new
 
     air.each do |x, y, z|
       OFFSETS.each do |dx, dy, dz|

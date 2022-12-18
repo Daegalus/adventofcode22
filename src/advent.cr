@@ -65,8 +65,8 @@ module Advent
     end
   end
 
-  def self.answer(part : Int32, answer : String)
-    puts "  [Part #{part}] #{answer.colorize.yellow}".colorize.light_blue.bold
+  def self.answer(part : Int32, answer : String | Number)
+    puts "  [Part #{part}] #{answer.to_s.colorize.yellow}".colorize.light_blue.bold
   end
 
   def self.download(year : Int32, day : Int32)

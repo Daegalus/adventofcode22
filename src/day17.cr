@@ -1,56 +1,12 @@
-require "complex"
+require "./support"
 
 module Advent::Day17
-
-  class Point
-    getter x : Int32, y : Int32
-
-    def initialize(@x, @y)
-    end
-
-    def +(other : Point)
-      Point.new(@x + other.x, @y + other.y)
-    end
-
-    def -(other : Point)
-      Point.new(@x - other.x, @y - other.y)
-    end
-
-    def ==(other : Point)
-      @x == other.x && @y == other.y
-    end
-
-    def <(other : Point)
-      @y < other.y || (@y == other.y && @x < other.x)
-    end
-
-    def <=(other : Point)
-      @y < other.y || (@y == other.y && @x <= other.x)
-    end
-
-    def >(other : Point)
-      @y > other.y || (@y == other.y && @x > other.x)
-    end
-
-    def >=(other : Point)
-      @y > other.y || (@y == other.y && @x >= other.x)
-    end
-
-    def hash
-      @x.hash ^ @y.hash
-    end
-
-    def to_s(io)
-      io << "(#{@x}, #{@y})"
-    end
-  end
-
   ROCKS = [
-    [Point.new(0, 0), Point.new(1, 0), Point.new(2, 0), Point.new(3, 0)], # ----
+    [Point.new(0, 0), Point.new(1, 0), Point.new(2, 0), Point.new(3, 0)],                  # ----
     [Point.new(0, 1), Point.new(1, 1), Point.new(2, 1), Point.new(1, 2), Point.new(1, 0)], # +
     [Point.new(0, 0), Point.new(1, 0), Point.new(2, 0), Point.new(2, 1), Point.new(2, 2)], # -|
-    [Point.new(0, 0), Point.new(0, 1), Point.new(0, 2), Point.new(0, 3)], # |
-    [Point.new(0, 0), Point.new(0, 1), Point.new(1, 0), Point.new(1, 1)], # []
+    [Point.new(0, 0), Point.new(0, 1), Point.new(0, 2), Point.new(0, 3)],                  # |
+    [Point.new(0, 0), Point.new(0, 1), Point.new(1, 0), Point.new(1, 1)],                  # []
   ]
 
   def self.summarize(solid : Set(Point))
@@ -72,7 +28,7 @@ module Advent::Day17
 
     rc = 0i64
     ri = 0i64
-    rock = ROCKS[ri].map(&.+ Point.new(2, 3+height)).to_set
+    rock = ROCKS[ri].map(&.+ Point.new(2, 3 + height)).to_set
     offset = 0
 
     while rc < loop_count
@@ -87,7 +43,7 @@ module Advent::Day17
           height = solid.map(&.y).max + 1
           break if rc >= loop_count
           ri = (ri + 1) % ROCKS.size
-          rock = ROCKS[ri].map(&.+ Point.new(2, 3+height)).to_set
+          rock = ROCKS[ri].map(&.+ Point.new(2, 3 + height)).to_set
           key = {ji, ri, summarize(solid)}
           if seen.has_key?(key)
             lrc, lh = seen[key]
@@ -115,7 +71,7 @@ module Advent::Day17
     rc = 0
     ri = 0
 
-    rock = ROCKS[ri].map(&.+ Point.new(2, 3+height)).to_set
+    rock = ROCKS[ri].map(&.+ Point.new(2, 3 + height)).to_set
 
     while rc < loop_count
       jets.each do |jet|
@@ -129,7 +85,7 @@ module Advent::Day17
           height = solid.map(&.y).max + 1
           break if rc >= loop_count
           ri = (ri + 1) % ROCKS.size
-          rock = ROCKS[ri].map(&.+ Point.new(2, 3+height)).to_set
+          rock = ROCKS[ri].map(&.+ Point.new(2, 3 + height)).to_set
         else
           rock = moved
         end
@@ -143,9 +99,9 @@ module Advent::Day17
     data = Advent.input(day: 17, title: "Pyroclastic Flow")
 
     part1 = complex_tetris(data)
-    Advent.answer(part: 1, answer: part1.to_s)
+    Advent.answer(part: 1, answer: part1)
 
     part2 = large_tetris(data, 1_000_000_000_000)
-    Advent.answer(part: 2, answer: part2.to_s)
+    Advent.answer(part: 2, answer: part2)
   end
 end

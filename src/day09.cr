@@ -1,10 +1,10 @@
 module Advent::Day09
   DIRS = {
-      "U" => Point.new(0, -1),
-      "D" => Point.new(0, 1),
-      "L" => Point.new(-1, 0),
-      "R" => Point.new(1, 0),
-    }
+    "U" => Point.new(0, -1),
+    "D" => Point.new(0, 1),
+    "L" => Point.new(-1, 0),
+    "R" => Point.new(1, 0),
+  }
 
   record Point, x : Int32, y : Int32 do
     def +(other : Point)
@@ -27,9 +27,9 @@ module Advent::Day09
   def self.run
     data = Advent.input(day: 9, title: "Rope Bridge")
 
-    ts = Array.new(10) { Point.new(0, 0)}
-    visited = Set{ Point.new(0, 0) }
-    visited2 = Set{ Point.new(0, 0) }
+    ts = Array.new(10) { Point.new(0, 0) }
+    visited = Set{Point.new(0, 0)}
+    visited2 = Set{Point.new(0, 0)}
 
     data.scan(/([UDLR]) (\d+)/) do |m|
       dp = DIRS[m[1]]

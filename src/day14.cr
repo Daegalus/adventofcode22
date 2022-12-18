@@ -1,5 +1,4 @@
 module Advent::Day14
-
   def self.fill(rocks, ymax, part2 = false)
     (0..).each do |n|
       x, y = 500, 0
@@ -34,7 +33,6 @@ module Advent::Day14
 
     part1 = fill(rocks.clone, ymax)
     part2 = fill(rocks, ymax + 2, true)
-   
 
     Advent.answer(part: 1, answer: part1.to_s)
     Advent.answer(part: 2, answer: part2.to_s)

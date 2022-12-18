@@ -1,5 +1,4 @@
 module Advent::Day11
-
   record Monkey, id : UInt64, items : Array(UInt64), operation : String, operation_value : UInt64, test : UInt64, true_throw : UInt64, false_throw : UInt64 do
     def operation(item : UInt64)
       case @operation
@@ -14,7 +13,7 @@ module Advent::Day11
       end
     end
   end
-  
+
   def self.run
     data = Advent.input(day: 11, title: "Monkey In The Middle").split("\n\n")
 
@@ -47,7 +46,7 @@ module Advent::Day11
     end
     return monkeys
   end
-  
+
   def self.looks(monkeys : Array(Monkey), mod = 3, times = 20, part : Int32 = 1) : UInt64
     counts = {} of UInt64 => UInt64
     (0...times).each do |_|
@@ -55,7 +54,7 @@ module Advent::Day11
         counts[monkey.id] ||= 0_u64
         counts[monkey.id] += monkey.items.size
         monkey.items.map!(&.% mod) if part == 2
-        monkey.items.map!{|item| monkey.operation(item)}
+        monkey.items.map! { |item| monkey.operation(item) }
         monkey.items.map!(&.// mod) if part == 1
         monkey.items.each do |item|
           monkeys[item % monkey.test == 0 ? monkey.true_throw : monkey.false_throw].items << item

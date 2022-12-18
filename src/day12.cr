@@ -5,7 +5,7 @@ module Advent::Day12
       {y + 0, x - 1},
       {y + 0, x + 1},
       {y + 1, x + 0},
-    ].select { |y2, x2| (0 <= y2 < h) && (0 <= x2 < w)}
+    ].select { |y2, x2| (0 <= y2 < h) && (0 <= x2 < w) }
   end
 
   def self.run
@@ -32,14 +32,14 @@ module Advent::Day12
   end
 
   def self.get_a(grid, start : {Int32, Int32})
-    queue = Deque({Int32,Int32}).new([{start[0], start[1]}])
+    queue = Deque({Int32, Int32}).new([{start[0], start[1]}])
     answer = [] of {Int32, Int32}
-    visited = Set({Int32,Int32}).new([start])
+    visited = Set({Int32, Int32}).new([start])
     while !queue.empty?
       qy, qx = queue.shift
       adjs = adj(qy, qx, grid.size, grid[0].size)
-      adjs = adjs.select{ |dy, dx| grid[dy][dx] - grid[qy][qx] >= -1 }
-      adjs = adjs.reject{ |direction| visited.includes? direction }
+      adjs = adjs.select { |dy, dx| grid[dy][dx] - grid[qy][qx] >= -1 }
+      adjs = adjs.reject { |direction| visited.includes? direction }
       adjs.each do |dy, dx|
         if grid[dy][dx] == 'a'
           answer << {dy, dx}
@@ -51,16 +51,16 @@ module Advent::Day12
     answer
   end
 
-  def self.traverse(grid, start : {Int32, Int32}, part2 = false, ending = {0,0})
-    queue = Deque({Int32,Int32,Int32}).new([{0, start[0], start[1]}])
+  def self.traverse(grid, start : {Int32, Int32}, part2 = false, ending = {0, 0})
+    queue = Deque({Int32, Int32, Int32}).new([{0, start[0], start[1]}])
     answer = 0
-    visited = Set({Int32,Int32}).new([start])
+    visited = Set({Int32, Int32}).new([start])
     while !queue.empty?
       steps, qy, qx = queue.shift
       adjs = adj(qy, qx, grid.size, grid[0].size)
-      adjs = adjs.select{ |dy, dx| grid[dy][dx] - grid[qy][qx] <= 1 } if !part2
-      adjs = adjs.select{ |dy, dx| grid[dy][dx] - grid[qy][qx] >= -1 } if part2
-      adjs = adjs.reject{ |direction| visited.includes? direction }
+      adjs = adjs.select { |dy, dx| grid[dy][dx] - grid[qy][qx] <= 1 } if !part2
+      adjs = adjs.select { |dy, dx| grid[dy][dx] - grid[qy][qx] >= -1 } if part2
+      adjs = adjs.reject { |direction| visited.includes? direction }
       adjs.each do |dy, dx|
         if {dy, dx} == ending
           answer = steps + 1

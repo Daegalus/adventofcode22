@@ -1,9 +1,8 @@
 module Advent::Day16
-
   record Valve, name : String, rate : UInt32, connections : Array(String)
 
   def self.run
-    data = Advent.input(day: 16, title: "Proboscidea Volcanium")    
+    data = Advent.input(day: 16, title: "Proboscidea Volcanium")
 
     valves = {} of String => Valve
     data.each_line do |line|
@@ -30,9 +29,9 @@ module Advent::Day16
 
     bitgraphsl = {} of UInt32 => UInt32
     worthIt.each do |valve|
-     worthIt.each do |valve2|
-       bitgraphsl[bitfield[valve.name]|bitfield[valve2.name]] = graph[valve.name][valve2.name].to_u
-     end
+      worthIt.each do |valve2|
+        bitgraphsl[bitfield[valve.name] | bitfield[valve2.name]] = graph[valve.name][valve2.name].to_u
+      end
     end
 
     worthbitsl = {} of UInt32 => Tuple(UInt32, UInt32)
@@ -41,7 +40,7 @@ module Advent::Day16
     end
 
     part1 = dfs(worthbitsl, bitgraphsl, start, 30, 0, 0, 0, start)
-    
+
     allpaths = dfspaths(worthbitsl, bitgraphsl, start, 26, 0, 0, 0, start, 0)
 
     trimpaths = [] of Tuple(Int32, UInt32)
@@ -51,7 +50,7 @@ module Advent::Day16
 
     part2 = 0u32
     (0..trimpaths.size).each do |i|
-      (i+1..trimpaths.size).each do |j|
+      (i + 1..trimpaths.size).each do |j|
         next if j >= trimpaths.size
         next if trimpaths[i][1] & trimpaths[j][1] != 0
         part2 = {part2, trimpaths[i][0] + trimpaths[j][0]}.max
@@ -68,25 +67,24 @@ module Advent::Day16
       next if node == bit[0] || bit[0] == start || bit[0] & on != 0
       l = bitgraphsl[node | bit[0]] + 1
       next if minute + l > target_time
-      paths += dfspaths(worthbitsl, bitgraphsl, start, target_time, pressure + (target_time - minute - l) * bit[1], minute+l, on|bit[0], bit[0], path|bit[0])
+      paths += dfspaths(worthbitsl, bitgraphsl, start, target_time, pressure + (target_time - minute - l) * bit[1], minute + l, on | bit[0], bit[0], path | bit[0])
     end
     return paths
   end
-  
+
   def self.dfs(worthbitsl, bitgraphsl, start, target_time : Int32, pressure : Int32, minute : Int32, on : Int32, node : UInt32)
     max = pressure
     worthbitsl.each do |i, bit|
       next if node === bit[0] || bit[0] == start || bit[0] & on != 0
       l = bitgraphsl[node | bit[0]] + 1
       next if minute + l > target_time
-      next_step = dfs(worthbitsl, bitgraphsl, start, target_time, pressure + (target_time-minute-l)*bit[1], minute+l, on|bit[0], bit[0])
+      next_step = dfs(worthbitsl, bitgraphsl, start, target_time, pressure + (target_time - minute - l)*bit[1], minute + l, on | bit[0], bit[0])
       max = {max, next_step}.max
     end
     return max
   end
 
   def self.vertices(valves : Hash(String, Valve))
-    
     {vertices, dists}
   end
 
