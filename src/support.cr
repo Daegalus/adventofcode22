@@ -1,7 +1,7 @@
 class Point
-  getter x : Int32, y : Int32
+  getter x : Int32, y : Int32, z : Int32
 
-  def initialize(@x, @y)
+  def initialize(@x, @y, @z = 0)
   end
 
   def manhattan_distance(other : Point)
@@ -20,38 +20,38 @@ class Point
   end
 
   def +(other : Point)
-    Point.new(@x + other.x, @y + other.y)
+    Point.new(@x + other.x, @y + other.y, @z + other.z)
   end
 
   def -(other : Point)
-    Point.new(@x - other.x, @y - other.y)
+    Point.new(@x - other.x, @y - other.y, @z - other.z)
   end
 
   def ==(other : Point)
-    @x == other.x && @y == other.y
+    @x == other.x && @y == other.y && @z == other.z
   end
 
   def <(other : Point)
-    @y < other.y || (@y == other.y && @x < other.x)
+    @y < other.y || (@y == other.y && @x < other.x) || (@y == other.y && @x == other.x && @z < other.z)
   end
 
   def <=(other : Point)
-    @y < other.y || (@y == other.y && @x <= other.x)
+    @y < other.y || (@y == other.y && @x <= other.x) || (@y == other.y && @x == other.x && @z <= other.z)
   end
 
   def >(other : Point)
-    @y > other.y || (@y == other.y && @x > other.x)
+    @y > other.y || (@y == other.y && @x > other.x) || (@y == other.y && @x == other.x && @z > other.z)
   end
 
   def >=(other : Point)
-    @y > other.y || (@y == other.y && @x >= other.x)
+    @y > other.y || (@y == other.y && @x >= other.x) || (@y == other.y && @x == other.x && @z >= other.z)
   end
 
   def hash
-    @x.hash ^ @y.hash
+    @x.hash ^ @y.hash ^ @z.hash
   end
 
   def to_s(io)
-    io << "(#{@x}, #{@y})"
+    io << "(#{@x}, #{@y} #{@z ? ", #{@z}" : ""})"
   end
 end
