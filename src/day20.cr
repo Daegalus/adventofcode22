@@ -13,10 +13,10 @@ module Advent::Day20
     numbers = data.lines.map(&.to_i64.* key)
     indices = (0...numbers.size).to_a
 
-    (indices * times).clone.each do |i|
+    (indices * times).each do |i|
       j = indices.index(i).not_nil!
       indices.delete_at(j)
-      indices.insert((j.to_i64+numbers[i]) % indices.size, i)
+      indices.insert((j.to_i64 + numbers[i]) % indices.size, i)
     end
 
     zero_loc = indices.index(numbers.index(0)).not_nil!
