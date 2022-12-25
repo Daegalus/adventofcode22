@@ -23,6 +23,10 @@ require "./day18"
 require "./day19"
 require "./day20"
 require "./day21"
+require "./day22"
+require "./day23"
+require "./day24"
+require "./day25"
 
 module Advent
   VERSION = "0.1.2"
@@ -48,7 +52,11 @@ module Advent
     # Advent::Day18.run
     # Advent::Day19.run
     # Advent::Day20.run
-    Advent::Day21.run
+    # Advent::Day21.run
+    # Advent::Day22.run
+    # Advent::Day23.run
+    # Advent::Day24.run
+    Advent::Day25.run
   end
 
   def self.input(day : Int32, title : String)
@@ -71,7 +79,7 @@ module Advent
     end
   end
 
-  def self.answer(part : Int32, answer : String | Number)
+  def self.answer(part : Int32, answer : String | Number | Nil | Char)
     puts "  [Part #{part}] #{answer.to_s.colorize.yellow}".colorize.light_blue.bold
   end
 
