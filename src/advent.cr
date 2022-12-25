@@ -32,30 +32,30 @@ module Advent
   VERSION = "0.1.2"
 
   def self.run
-    # Advent::Day01.run
-    # Advent::Day02.run
-    # Advent::Day03.run
-    # Advent::Day04.run
-    # Advent::Day05.run
-    # Advent::Day06.run
-    # Advent::Day07.run
-    # Advent::Day08.run
-    # Advent::Day09.run
-    # Advent::Day10.run
-    # Advent::Day11.run
-    # Advent::Day12.run
-    # Advent::Day13.run
-    # Advent::Day14.run
-    # Advent::Day15.run
-    # Advent::Day16.run
-    # Advent::Day17.run
-    # Advent::Day18.run
-    # Advent::Day19.run
-    # Advent::Day20.run
-    # Advent::Day21.run
-    # Advent::Day22.run
-    # Advent::Day23.run
-    # Advent::Day24.run
+    Advent::Day01.run
+    Advent::Day02.run
+    Advent::Day03.run
+    Advent::Day04.run
+    Advent::Day05.run
+    Advent::Day06.run
+    Advent::Day07.run
+    Advent::Day08.run
+    Advent::Day09.run
+    Advent::Day10.run
+    Advent::Day11.run
+    Advent::Day12.run
+    Advent::Day13.run
+    Advent::Day14.run
+    Advent::Day15.run
+    Advent::Day16.run
+    Advent::Day17.run
+    Advent::Day18.run
+    Advent::Day19.run
+    Advent::Day20.run
+    Advent::Day21.run
+    Advent::Day22.run
+    Advent::Day23.run
+    Advent::Day24.run
     Advent::Day25.run
   end
 
